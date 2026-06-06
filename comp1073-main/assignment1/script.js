@@ -36,3 +36,15 @@ var whereWords = [
   "at the edge of the solar system",
   "inside an abandoned asteroid base"
 ];
+
+//How Array
+var howWords = [
+  "and made it back alive.",
+  "and changed the course of history.",
+  "without any backup.",
+  "and earned the galaxy's respect.",
+  "before anyone else even knew the danger.",
+  "and left a message for the next explorer.",
+  "with only seconds to spare.",
+  "and the mission logs told the whole story."
+];
