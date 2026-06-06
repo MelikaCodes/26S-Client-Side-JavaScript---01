@@ -39,6 +39,18 @@ var whereWords = [
   "inside an abandoned asteroid base"
 ];
 
+//When Array
+var whenWords = [
+  "during a meteor shower",
+  "just before the sun went supernova",
+  "in the dead of deep space night",
+  "when all communications went dark",
+  "as the mission clock hit zero",
+  "moments before re-entry",
+  "while orbiting at full speed",
+  "after three years in cryosleep"
+];
+
 //How Array
 var howWords = [
   "and made it back alive.",
@@ -61,3 +73,19 @@ function cycleWho() {
 }
 
 <button id="btn-who" onclick="cycleWho()">A fearless astronaut</button>
+
+<button id="btn-who" onclick="cycleWho()">A rookie space cadet</button>
+
+<button id="btn-who" onclick="cycleWho()">A mysterious alien</button>
+
+<button id="btn-who" onclick="cycleWho()">The captain of a starship</button>
+
+<button id="btn-who" onclick="cycleWho()">A lone space ranger</button>
+
+<button id="btn-who" onclick="cycleWho()">An android explorer</button>
+
+<button id="btn-who" onclick="cycleWho()">A rebel pilot</button>
+
+<button id="btn-who" onclick="cycleWho()">A young cosmonaut</button>
+
+ 
