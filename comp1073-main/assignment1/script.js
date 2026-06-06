@@ -52,13 +52,12 @@ var howWords = [
 ];
 
 //who function
-function cycleWho(){
-    whoIndex= whoIndex + 1;
-    if(whoIndex=>whoWord.lenght){
-        whoIndex=0;
+function cycleWho() {
+    whoIndex = whoIndex + 1;
+    if (whoIndex >= whoWord.length) {
+        whoIndex = 0;
     }
-
-    document.getElementsById("btn-who").textContent=whoWords[whoIndex];
+    document.getElementById("btn-who").textContent = whoWord[whoIndex];
 }
 
 <button id="btn-who" onclick="cycleWho()">A fearless astronaut</button>
