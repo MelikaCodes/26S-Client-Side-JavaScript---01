@@ -13,3 +13,14 @@ h1{
     text-transform: uppercase;
     margin-bottom: 40px;
 }
+
+button{
+    background-color: rgb(98, 98, 201);
+    color: rgb(0, 212, 255);
+    border: 2px solid rgb(0, 212, 255);
+    padding: 12px 20px;
+    margin: 8px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
