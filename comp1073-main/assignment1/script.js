@@ -8,7 +8,7 @@ let howIndex=0;
 
 //Word Array
 
-var whoWord = [
+let whoWords = [
     "A fearless astronaut",
     "A rookie space cadet",
     "A mysterious alien",
@@ -70,10 +70,10 @@ let howWords = [
 //who function
 function cycleWho() {
     whoIndex = whoIndex + 1;
-    if (whoIndex >= whoWord.length) {
+    if (whoIndex >= whoWords.length) {
         whoIndex = 0;
     }
-    document.getElementById("btn-who").textContent = whoWord[whoIndex];
+    document.getElementById("btn-who").textContent = whoWords[whoIndex];
 }
 
 <button id="btn-who" onclick="cycleWho()">A fearless astronaut</button>
@@ -82,10 +82,10 @@ function cycleWho() {
  //what function
 function cycleWhat() {
     whatIndex = whatIndex + 1;
-    if (whatIndex >= whatWord.length) {
+    if (whatIndex >= whatWords.length) {
         whatIndex = 0;
     }
-    document.getElementById("btn-what").textContent = whatWord[whatIndex];
+    document.getElementById("btn-what").textContent = whatWords[whatIndex];
 }
 
 <button id="btn-what" onclick="cycleWhat()">discovered a hidden galaxy</button>
@@ -94,10 +94,10 @@ function cycleWhat() {
 //where function
 function cycleWhere() {
     whereIndex = whereIndex + 1;
-    if (whereIndex >= whereWord.length) {
+    if (whereIndex >= whereWords.length) {
         whereIndex = 0;
     }
-    document.getElementById("btn-where").textContent = whereWord[whereIndex];
+    document.getElementById("btn-where").textContent = whereWords[whereIndex];
 }
 
 <button id="btn-where" onclick="cycleWhere()">on the dark side of Mars</button>
@@ -105,10 +105,10 @@ function cycleWhere() {
 //when function
 function cycleWhen() {
     whenIndex = whenIndex + 1;
-    if (whenIndex >= whenWord.length) {
+    if (whenIndex >= whenWords.length) {
         whenIndex = 0;
     }
-    document.getElementById("btn-when").textContent = whenWord[whenIndex];
+    document.getElementById("btn-when").textContent = whenWords[whenIndex];
 }
 
 <button id="btn-when" onclick="cycleWhen()">during a meteor shower</button>
@@ -116,10 +116,10 @@ function cycleWhen() {
 //how function
 function cycleHow() {
     howIndex = howIndex + 1;
-    if (howIndex >= howWord.length) {
+    if (howIndex >= howWords.length) {
         howIndex = 0;
     }
-    document.getElementById("btn-how").textContent = howWord[howIndex];
+    document.getElementById("btn-how").textContent = howWords[howIndex];
 }
 
 <button id="btn-how" onclick="cycleHow()">and made it back alive.</button>
