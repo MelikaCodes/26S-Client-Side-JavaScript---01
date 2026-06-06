@@ -1,5 +1,7 @@
 //🚀
 
+var whoIndex=0;
+
 //Word Array
 
 var whoWord = [
@@ -48,3 +50,13 @@ var howWords = [
   "with only seconds to spare.",
   "and the mission logs told the whole story."
 ];
+
+//who function
+function cycleWho(){
+    whoIndex= whoIndex + 1;
+    if(whoIndex=>whoWord.lenght){
+        whoIndex=0;
+    }
+
+    document.getElementsById("btn-who").textContent=whoWords[whoIndex];
+}
