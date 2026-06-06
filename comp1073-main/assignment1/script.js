@@ -131,11 +131,11 @@ function resetStory(){
     whenIndex=0;
     howIndex=0;
 
-    document.getElementById("btn-who").textContent=whoWords[0];
-    document.getElementById("btn-what").textContent=whatWords[0];
-    document.getElementById("btn-where").textContent=whereWords[0];
-    document.getElementById("btn-when").textContent=whenWords[0];
-    document.getElementById("btn-how").textContent=howWords[0];
+    document.getElementById("btn-who").textContent = "Who?";
+    document.getElementById("btn-what").textContent = "What?";
+    document.getElementById("btn-where").textContent = "Where?";
+    document.getElementById("btn-when").textContent = "When?";
+    document.getElementById("btn-how").textContent = "How?";
 
      document.getElementById("story-output").textContent = ""; 
 }
