@@ -138,3 +138,19 @@ function resetStory(){
     document.getElementById("btn-how").textContent=howWords[0];
 }
 
+//Random story function 
+function randomStory(){
+    whoIndex=Math.floor(Math.random()*whoWords.length);
+    whatIndex=Math.floor(Math.random()*whatWords.length);
+    whereIndex=Math.floor(Math.random()*whereWords.length);
+    whenIndex=Math.floor(Math.random()*whenWords.length);
+    howIndex=Math.floor(Math.random()*howWords.length);
+
+    document.getElementById("btn-who").textContent=whoWords[whoIndex];
+    document.getElementById("btn-what").textContent=whatWords[whatIndex];
+    document.getElementById("btn-where").textContent=whereWords[whereIndex];
+    document.getElementById("btn-when").textContent=whenWords[whenIndex];
+    document.getElementById("btn-how").textContent=howWords[howIndex];
+
+    tellStory();
+}
