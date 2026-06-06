@@ -1,6 +1,10 @@
 //🚀
 
-var whoIndex=0;
+let whoIndex=0;
+let whatIndex=0;
+let whereIndex=0;
+let whenIndex=0;
+let howIndex=0;
 
 //Word Array
 
@@ -16,7 +20,7 @@ var whoWord = [
 ];
 
 //What Array
-var whatWords = [
+let whatWords = [
   "discovered a hidden galaxy",
   "intercepted a strange signal",
   "repaired a broken warp drive",
@@ -28,7 +32,7 @@ var whatWords = [
 ];
 
 // Where Array
-var whereWords = [
+let whereWords = [
   "on the dark side of Mars",
   "inside a drifting space station",
   "near the rings of Saturn",
@@ -40,7 +44,7 @@ var whereWords = [
 ];
 
 //When Array
-var whenWords = [
+let whenWords = [
   "during a meteor shower",
   "just before the sun went supernova",
   "in the dead of deep space night",
@@ -52,7 +56,7 @@ var whenWords = [
 ];
 
 //How Array
-var howWords = [
+let howWords = [
   "and made it back alive.",
   "and changed the course of history.",
   "without any backup.",
@@ -74,18 +78,48 @@ function cycleWho() {
 
 <button id="btn-who" onclick="cycleWho()">A fearless astronaut</button>
 
-<button id="btn-who" onclick="cycleWho()">A rookie space cadet</button>
 
-<button id="btn-who" onclick="cycleWho()">A mysterious alien</button>
+ //what function
+function cycleWhat() {
+    whatIndex = whatIndex + 1;
+    if (whatIndex >= whatWord.length) {
+        whatIndex = 0;
+    }
+    document.getElementById("btn-what").textContent = whatWord[whatIndex];
+}
 
-<button id="btn-who" onclick="cycleWho()">The captain of a starship</button>
+<button id="btn-what" onclick="cycleWhat()">discovered a hidden galaxy</button>
 
-<button id="btn-who" onclick="cycleWho()">A lone space ranger</button>
 
-<button id="btn-who" onclick="cycleWho()">An android explorer</button>
+//where function
+function cycleWhere() {
+    whereIndex = whereIndex + 1;
+    if (whereIndex >= whereWord.length) {
+        whereIndex = 0;
+    }
+    document.getElementById("btn-where").textContent = whereWord[whereIndex];
+}
 
-<button id="btn-who" onclick="cycleWho()">A rebel pilot</button>
+<button id="btn-where" onclick="cycleWhere()">on the dark side of Mars</button>
 
-<button id="btn-who" onclick="cycleWho()">A young cosmonaut</button>
+//when function
+function cycleWhen() {
+    whenIndex = whenIndex + 1;
+    if (whenIndex >= whenWord.length) {
+        whenIndex = 0;
+    }
+    document.getElementById("btn-when").textContent = whenWord[whenIndex];
+}
 
- 
+<button id="btn-when" onclick="cycleWhen()">during a meteor shower</button>
+
+//how function
+function cycleHow() {
+    howIndex = howIndex + 1;
+    if (howIndex >= howWord.length) {
+        howIndex = 0;
+    }
+    document.getElementById("btn-how").textContent = howWord[howIndex];
+}
+
+<button id="btn-how" onclick="cycleHow()">and made it back alive.</button>
