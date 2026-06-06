@@ -4,6 +4,9 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     padding: 40px;
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+     background-color: rgb(10, 10, 42);
 }
 
 h1{
@@ -42,3 +45,4 @@ button:hover {
     line-height: 1.6;
     min-height: 60px;
 }
+
