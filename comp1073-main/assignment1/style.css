@@ -1,3 +1,4 @@
+/* Body - space background */
 body{
     background-color: rgb(232, 217, 17);
     color: white;
@@ -9,6 +10,7 @@ body{
      background-color: rgb(10, 10, 42);
 }
 
+/* Page title */
 h1{
     font-size: 3rem;
     color: rgb(0, 212, 255);
@@ -17,6 +19,7 @@ h1{
     margin-bottom: 40px;
 }
 
+/* All buttons - style */
 button{
     background-color: rgb(98, 98, 201);
     color: rgb(0, 212, 255);
@@ -28,11 +31,13 @@ button{
     cursor: pointer;
 }
 
+/* Button hover */
 button:hover {
     background-color: rgb(0, 212, 255);
     color: rgb(10, 10, 42);
 }
 
+/* Story output box */
 #story-output {
     background-color: rgb(26, 26, 78);
     color: rgb(255, 255, 255);
@@ -46,4 +51,10 @@ button:hover {
     min-height: 60px;
 }
 
-
+/* Fixed size for all buttons */
+#btn-who, #btn-what, #btn-where, #btn-when, #btn-how {
+    width: 300px;
+    height: 50px;
+    display: block;
+    margin: 8px auto;
+}
