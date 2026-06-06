@@ -121,3 +121,20 @@ function tellStory() {
 
     document.getElementById("story-output").textContent = story;
 }
+
+
+//Reset function
+function resetStory(){
+    whoIndex=0;
+    whatIndex=0;
+    whereIndex=0;
+    whenIndex=0;
+    howIndex=0;
+
+    document.getElementsById("btn-who").textContent=whoWords[0];
+    document.getElementById("btn-what").textContent=whatWords[0];
+    document.getElementById("btn-where").textContent=whereWords[0];
+    document.getElementById("btn-when").textContent=whenWords[0];
+    document.getElementById("btn-how").textContent=howWords[0];
+}
+
