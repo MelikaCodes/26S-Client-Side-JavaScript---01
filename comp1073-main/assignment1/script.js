@@ -60,3 +60,5 @@ function cycleWho(){
 
     document.getElementsById("btn-who").textContent=whoWords[whoIndex];
 }
+
+<button id="btn-who" onclick="cycleWho()">A fearless astronaut</button>
