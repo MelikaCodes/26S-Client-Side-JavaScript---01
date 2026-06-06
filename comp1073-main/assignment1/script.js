@@ -1,13 +1,12 @@
 //🚀
 
-let whoIndex=0;
-let whatIndex=0;
-let whereIndex=0;
-let whenIndex=0;
-let howIndex=0;
+let whoIndex = 0;
+let whatIndex = 0;
+let whereIndex = 0;
+let whenIndex = 0;
+let howIndex = 0;
 
-//Word Array
-
+// Who Array
 let whoWords = [
     "A fearless astronaut",
     "A rookie space cadet",
@@ -19,55 +18,55 @@ let whoWords = [
     "A young cosmonaut"
 ];
 
-//What Array
+// What Array
 let whatWords = [
-  "discovered a hidden galaxy",
-  "intercepted a strange signal",
-  "repaired a broken warp drive",
-  "escaped a black hole",
-  "decoded an alien map",
-  "launched into hyperspace",
-  "landed on an uncharted moon",
-  "outsmarted a rival crew"
+    "discovered a hidden galaxy",
+    "intercepted a strange signal",
+    "repaired a broken warp drive",
+    "escaped a black hole",
+    "decoded an alien map",
+    "launched into hyperspace",
+    "landed on an uncharted moon",
+    "outsmarted a rival crew"
 ];
 
 // Where Array
 let whereWords = [
-  "on the dark side of Mars",
-  "inside a drifting space station",
-  "near the rings of Saturn",
-  "on a frozen alien planet",
-  "deep inside a nebula",
-  "aboard a cloaked spacecraft",
-  "at the edge of the solar system",
-  "inside an abandoned asteroid base"
+    "on the dark side of Mars",
+    "inside a drifting space station",
+    "near the rings of Saturn",
+    "on a frozen alien planet",
+    "deep inside a nebula",
+    "aboard a cloaked spacecraft",
+    "at the edge of the solar system",
+    "inside an abandoned asteroid base"
 ];
 
-//When Array
+// When Array
 let whenWords = [
-  "during a meteor shower",
-  "just before the sun went supernova",
-  "in the dead of deep space night",
-  "when all communications went dark",
-  "as the mission clock hit zero",
-  "moments before re-entry",
-  "while orbiting at full speed",
-  "after three years in cryosleep"
+    "during a meteor shower",
+    "just before the sun went supernova",
+    "in the dead of deep space night",
+    "when all communications went dark",
+    "as the mission clock hit zero",
+    "moments before re-entry",
+    "while orbiting at full speed",
+    "after three years in cryosleep"
 ];
 
-//How Array
+// How Array
 let howWords = [
-  "and made it back alive.",
-  "and changed the course of history.",
-  "without any backup.",
-  "and earned the galaxy's respect.",
-  "before anyone else even knew the danger.",
-  "and left a message for the next explorer.",
-  "with only seconds to spare.",
-  "and the mission logs told the whole story."
+    "and made it back alive.",
+    "and changed the course of history.",
+    "without any backup.",
+    "and earned the galaxy's respect.",
+    "before anyone else even knew the danger.",
+    "and left a message for the next explorer.",
+    "with only seconds to spare.",
+    "and the mission logs told the whole story."
 ];
 
-//who function
+// Who function
 function cycleWho() {
     whoIndex = whoIndex + 1;
     if (whoIndex >= whoWords.length) {
@@ -76,10 +75,7 @@ function cycleWho() {
     document.getElementById("btn-who").textContent = whoWords[whoIndex];
 }
 
-<button id="btn-who" onclick="cycleWho()">A fearless astronaut</button>
-
-
- //what function
+// What function
 function cycleWhat() {
     whatIndex = whatIndex + 1;
     if (whatIndex >= whatWords.length) {
@@ -88,10 +84,7 @@ function cycleWhat() {
     document.getElementById("btn-what").textContent = whatWords[whatIndex];
 }
 
-<button id="btn-what" onclick="cycleWhat()">discovered a hidden galaxy</button>
-
-
-//where function
+// Where function
 function cycleWhere() {
     whereIndex = whereIndex + 1;
     if (whereIndex >= whereWords.length) {
@@ -100,9 +93,7 @@ function cycleWhere() {
     document.getElementById("btn-where").textContent = whereWords[whereIndex];
 }
 
-<button id="btn-where" onclick="cycleWhere()">on the dark side of Mars</button>
-
-//when function
+// When function
 function cycleWhen() {
     whenIndex = whenIndex + 1;
     if (whenIndex >= whenWords.length) {
@@ -111,9 +102,7 @@ function cycleWhen() {
     document.getElementById("btn-when").textContent = whenWords[whenIndex];
 }
 
-<button id="btn-when" onclick="cycleWhen()">during a meteor shower</button>
-
-//how function
+// How function
 function cycleHow() {
     howIndex = howIndex + 1;
     if (howIndex >= howWords.length) {
@@ -122,4 +111,13 @@ function cycleHow() {
     document.getElementById("btn-how").textContent = howWords[howIndex];
 }
 
-<button id="btn-how" onclick="cycleHow()">and made it back alive.</button>
+// Tell My Story function
+function tellStory() {
+    let story = whoWords[whoIndex] + " " +
+                whatWords[whatIndex] + " " +
+                whereWords[whereIndex] + " " +
+                whenWords[whenIndex] + " " +
+                howWords[howIndex];
+
+    document.getElementById("story-output").textContent = story;
+}
