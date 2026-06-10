@@ -1,5 +1,6 @@
 // Declare and initialize variables
 const btn = document.querySelector('button');
+const doc=document.querySelector('button');
 
 // Functions
 function random(number) {
@@ -10,8 +11,12 @@ function bgChange() {
     document.body.style.backgroundColor = rndCol;
 }
 // Event Listeners/Handlers
-btn.onclick = bgChange;
-
+// btn.onclick = bgChange;
+// btn.addEventListener("click", byChange);
+// btn.addEventListener("mouseover", byChange);
+// btn.addEventListener("mouseout", byChange);
+// btn.addEventListener("keydown", byChange);
+document.addEventListener("keydown", byChange);
 
 /* STEP 1: Experiment with a variety of different events - comment out the above onclick listener and build an alternate one below - try the following - onfocus/onblur, ondblclick, onmouseover/onmouseout, window.onkeypress/onkeydown/onkeyup
 */
@@ -21,19 +26,27 @@ btn.onclick = bgChange;
 // Comment out the above event listener/handler, and add the same event as an attribute directly to the button element
 
 /* STEP 3: Let's apply event handlers/listeners to a group of buttons - comment out the above BUTTON element, and create three new ones, A, B, and C */
-
+// const buttons=document.querySelector("scroll", byChange);
+const buttons=document.querySelectorAll("button");
+for(let i=0; i<buttons.length; i ++){
+    buttons[i].addEventListener("click", byChange);
+}
 
 /* STEP 4a: addEventListener() and removeEventListener()
 Let's rewrite the above code with these two methods - comment out the A, B, C buttons and restore the original button - then comment out the above code */
-
+buttons[i].removeEventListener("click", byChange);
 
 /* STEP 4b: We can also put the entire bgChange() function inside an anonymous function, if we'd like: */
-
+buttons[1].removeEventListener("click", byChange);
 
 
 /* STEP 4c: We can now remove the event listener … comment out the above code in STEP 4b, and then add another event listener, then remove it (silly, yes, but try it all the same) */
-
-
+const h1=document.querySelector();
+h1.addEventListener("click", (event)=>{
+    console.warn(event);
+    byChange();
+});
+h1.removeEventListener("click", byChange);
 
 // The ability to remove an event listener provides you with greater flexibility, at the cost of a bit more complexity - the choice is yours, but avoid inline JS
 
