@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>COMP1073 Cheat Sheet</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; color: #1a202c; padding: 20px; }
+  h1 { text-align: center; color: #2b6cb0; margin-bottom: 6px; font-size: 1.8em; }
+  .subtitle { text-align: center; color: #718096; margin-bottom: 20px; font-size: 0.9em; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
+  .card { background: white; border-radius: 10px; padding: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-top: 4px solid #4299e1; }
+  .card.green { border-top-color: #48bb78; }
+  .card.purple { border-top-color: #9f7aea; }
+  .card.orange { border-top-color: #ed8936; }
+  .card.red { border-top-color: #fc8181; }
+  .card.pink { border-top-color: #f687b3; }
+  h2 { font-size: 1em; color: #2d3748; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  pre { background: #edf2f7; border-radius: 6px; padding: 10px; font-size: 0.78em; overflow-x: auto; line-height: 1.5; }
+  .comment { color: #68d391; }
+  .keyword { color: #63b3ed; }
+  .string { color: #fbd38d; }
+  .tip { background: #fff5f5; border-left: 3px solid #fc8181; padding: 8px 10px; border-radius: 4px; font-size: 0.82em; margin-top: 10px; color: #c53030; }
+  .tip strong { display: block; margin-bottom: 2px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82em; margin-top: 8px; }
+  th { background: #ebf8ff; padding: 6px 8px; text-align: left; color: #2b6cb0; }
+  td { padding: 6px 8px; border-bottom: 1px solid #e2e8f0; }
+  tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; background: #bee3f8; color: #2b6cb0; border-radius: 4px; padding: 1px 6px; font-size: 0.75em; font-weight: bold; }
+  .badge.green { background: #c6f6d5; color: #276749; }
+  .badge.red { background: #fed7d7; color: #9b2c2c; }
+</style>
+</head>
+<body>
+
+<h1>📋 COMP1073 — Test 1 Cheat Sheet</h1>
+<p class="subtitle">Modules 1–6 | Client-Side JavaScript | Melika</p>
+
+<div class="grid">
+
+  <!-- MODULE 1 -->
+  <div class="card">
+    <h2>🟦 Module 1 — JS Intro & DOM</h2>
+    <pre><span class="comment">// Select elements</span>
+<span class="keyword">const</span> el = document.querySelector(<span class="string">"#myId"</span>);    <span class="comment">// first match</span>
+<span class="keyword">const</span> all = document.querySelectorAll(<span class="string">"p"</span>);  <span class="comment">// all matches</span>
+
+<span class="comment">// Change content & style</span>
+el.textContent = <span class="string">"Hello!"</span>;
+el.style.backgroundColor = <span class="string">"pink"</span>;
+
+<span class="comment">// Event listener — NO () on function name!</span>
+btn.addEventListener(<span class="string">"click"</span>, myFunction);
+
+<span class="comment">// Function</span>
+<span class="keyword">function</span> myFunction() {
+  console.log(<span class="string">"clicked!"</span>);
+}</pre>
+    <div class="tip"><strong>⚠️ Common Trap!</strong>
+    querySelector → first match only<br>
+    querySelectorAll → ALL matches<br>
+    NEVER: btn.addEventListener("click", myFunction())</div>
+  </div>
+
+  <!-- MODULE 2 -->
+  <div class="card green">
+    <h2>🟩 Module 2 — Variables & Strings</h2>
+    <pre><span class="comment">// Variables</span>
+<span class="keyword">let</span> name = <span class="string">"Melika"</span>;   <span class="comment">// can reassign</span>
+<span class="keyword">const</span> age = 25;       <span class="comment">// cannot reassign</span>
+
+<span class="comment">// String methods</span>
+name.length            <span class="comment">// 6 — no ()</span>
+name.toUpperCase()     <span class="comment">// "MELIKA"</span>
+name.toLowerCase()     <span class="comment">// "melika"</span>
+name.replace(<span class="string">"a"</span>,<span class="string">"o"</span>) <span class="comment">// "Meliko"</span>
+name.slice(0, 3)       <span class="comment">// "Mel"</span>
+name.indexOf(<span class="string">"M"</span>)      <span class="comment">// 0 (position)</span>
+
+<span class="comment">// Type conversion</span>
+Number(<span class="string">"42"</span>)   <span class="comment">// string → number</span>
+String(42)    <span class="comment">// number → string</span>
+
+<span class="comment">// Strict equality</span>
+5 === 5       <span class="comment">// true (value + type)</span>
+5 == <span class="string">"5"</span>     <span class="comment">// true (value only)</span></pre>
+    <div class="tip"><strong>⚠️ Remember!</strong>
+    .length → NO parentheses (it's a property!)<br>
+    .replace(old, new) → always this order</div>
+  </div>
+
+  <!-- MODULE 3 -->
+  <div class="card purple">
+    <h2>🟪 Module 3 — Arrays</h2>
+    <pre><span class="comment">// Create array</span>
+<span class="keyword">let</span> fruits = [<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"mango"</span>];
+
+<span class="comment">// Access items (index starts at 0!)</span>
+fruits[0]      <span class="comment">// "apple"</span>
+fruits.length  <span class="comment">// 3</span>
+
+<span class="comment">// Add / Remove</span>
+fruits.push(<span class="string">"peach"</span>)  <span class="comment">// add END → returns new LENGTH</span>
+fruits.pop()          <span class="comment">// remove END → returns ITEM</span>
+fruits.unshift(<span class="string">"kiwi"</span>) <span class="comment">// add FRONT → returns new LENGTH</span>
+fruits.shift()        <span class="comment">// remove FRONT → returns ITEM</span>
+
+<span class="comment">// Convert</span>
+fruits.join(<span class="string">", "</span>)     <span class="comment">// array → string</span>
+<span class="string">"a,b,c"</span>.split(<span class="string">","</span>)  <span class="comment">// string → array</span>
+
+<span class="comment">// Modify middle</span>
+fruits.splice(1, 1, <span class="string">"grape"</span>); <span class="comment">// at[1], remove 1, add "grape"</span></pre>
+    <div class="tip"><strong>⚠️ The Big Trick!</strong>
+    push() & unshift() → return new LENGTH<br>
+    pop() & shift() → return the removed ITEM</div>
+  </div>
+
+  <!-- MODULE 4 -->
+  <div class="card orange">
+    <h2>🟧 Module 4 — Conditionals & Loops</h2>
+    <pre><span class="comment">// if / else if / else</span>
+<span class="keyword">if</span> (score >= 90) {
+  console.log(<span class="string">"A"</span>);
+} <span class="keyword">else if</span> (score >= 80) {
+  console.log(<span class="string">"B"</span>);
+} <span class="keyword">else</span> {
+  console.log(<span class="string">"C"</span>);
+}
+
+<span class="comment">// Ternary</span>
+<span class="keyword">let</span> msg = age >= 18 ? <span class="string">"adult"</span> : <span class="string">"minor"</span>;
+
+<span class="comment">// Switch</span>
+<span class="keyword">switch</span>(day) {
+  <span class="keyword">case</span> <span class="string">"Mon"</span>: console.log(<span class="string">"Monday"</span>); <span class="keyword">break</span>;
+  <span class="keyword">default</span>: console.log(<span class="string">"other day"</span>);
+}
+
+<span class="comment">// for loop</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = 0; i &lt; arr.length; i++) {
+  console.log(arr[i]);
+}
+
+<span class="comment">// while loop — manual i++ required!</span>
+<span class="keyword">let</span> i = 0;
+<span class="keyword">while</span> (i &lt; arr.length) {
+  console.log(arr[i]);
+  i++; <span class="comment">// MUST DO THIS!</span>
+}
+
+<span class="comment">// forEach</span>
+arr.forEach((item) => {
+  console.log(item); <span class="comment">// no i++ needed</span>
+});</pre>
+    <div class="tip"><strong>⚠️ Remember!</strong>
+    break → EXIT loop entirely<br>
+    continue → SKIP current iteration<br>
+    while → YOU must write i++ manually!</div>
+  </div>
+
+  <!-- MODULE 5 -->
+  <div class="card red">
+    <h2>🟥 Module 5 — Functions & Scope</h2>
+    <pre><span class="comment">// Named function</span>
+<span class="keyword">function</span> greet(name) {
+  <span class="keyword">return</span> <span class="string">"Hello, "</span> + name;
+}
+<span class="keyword">let</span> msg = greet(<span class="string">"Melika"</span>); <span class="comment">// "Hello, Melika"</span>
+
+<span class="comment">// Anonymous function</span>
+<span class="keyword">const</span> greet = <span class="keyword">function</span>(name) {
+  <span class="keyword">return</span> <span class="string">"Hello, "</span> + name;
+};
+
+<span class="comment">// Arrow function</span>
+<span class="keyword">const</span> greet = (name) => {
+  <span class="keyword">return</span> <span class="string">"Hello, "</span> + name;
+};
+
+<span class="comment">// Scope</span>
+<span class="keyword">let</span> global = <span class="string">"everywhere"</span>; <span class="comment">// global ✅</span>
+
+<span class="keyword">function</span> myFunc() {
+  <span class="keyword">let</span> local = <span class="string">"only here"</span>; <span class="comment">// local</span>
+  console.log(global); <span class="comment">// ✅ can access global</span>
+}
+console.log(local); <span class="comment">// ❌ ReferenceError!</span></pre>
+    <div class="tip"><strong>⚠️ Remember!</strong>
+    return is OPTIONAL<br>
+    local variables → only inside their function<br>
+    global variables → accessible everywhere</div>
+  </div>
+
+  <!-- MODULE 6 -->
+  <div class="card pink">
+    <h2>🟫 Module 6 — Events</h2>
+    <pre><span class="comment">// Basic event listener</span>
+btn.addEventListener(<span class="string">"click"</span>, myFunction);
+<span class="comment">// NO () on function name!</span>
+
+<span class="comment">// Event object</span>
+btn.addEventListener(<span class="string">"click"</span>, (event) => {
+  console.log(event.target);      <span class="comment">// element clicked</span>
+  console.log(event.target.nodeName); <span class="comment">// "BUTTON", "IMG"</span>
+});
+
+<span class="comment">// preventDefault</span>
+form.addEventListener(<span class="string">"submit"</span>, (event) => {
+  event.preventDefault(); <span class="comment">// stop form submitting</span>
+});
+
+<span class="comment">// Event delegation — one listener on parent</span>
+thumbBar.addEventListener(<span class="string">"click"</span>, (event) => {
+  <span class="keyword">if</span> (event.target.nodeName === <span class="string">"IMG"</span>) {
+    displayImage(event.target.src);
+  }
+});
+
+<span class="comment">// Remove event listener</span>
+btn.removeEventListener(<span class="string">"click"</span>, myFunction);</pre>
+    <div class="tip"><strong>⚠️ Remember!</strong>
+    nodeName returns UPPERCASE: "IMG" not "img"<br>
+    event delegation = ONE listener on parent<br>
+    preventDefault = stops default browser action</div>
+  </div>
+
+  <!-- CODING TEMPLATE -->
+  <div class="card" style="border-top-color: #2d3748; grid-column: 1/-1;">
+    <h2>✍️ Short Answer Template — Always Use This Structure!</h2>
+    <pre><span class="comment">// Step 1: Describe what you're doing</span>
+<span class="keyword">const</span> output = document.querySelector(<span class="string">"#output"</span>);
+
+<span class="comment">// Step 2: Describe the function</span>
+<span class="keyword">function</span> myFunction(param) {
+  output.textContent = param;  <span class="comment">// = not ()</span>
+}
+
+<span class="comment">// Step 3: Describe the event listener</span>
+btn.addEventListener(<span class="string">"click"</span>, myFunction); <span class="comment">// no () !</span>
+
+<span class="comment">// Step 4: Describe the loop</span>
+<span class="keyword">for</span> (<span class="keyword">let</span> i = 0; i &lt; arr.length; i++) {
+  console.log(arr[i]);
+}
+
+<span class="comment">// Step 5: Describe the condition</span>
+<span class="keyword">if</span> (score >= 90) {
+  grade = <span class="string">"A"</span>;
+} <span class="keyword">else</span> {
+  grade = <span class="string">"B"</span>;
+}</pre>
+    <div class="tip"><strong>🚨 MOST IMPORTANT RULES FOR CODING QUESTIONS:</strong>
+    1. ADD COMMENTS above every section — prof will take marks without them!<br>
+    2. textContent = "value" not textContent("value")<br>
+    3. addEventListener("click", myFunction) — NO () on function name!<br>
+    4. while loops need manual i++ or infinite loop!<br>
+    5. Arrays start at index 0!</div>
+  </div>
+
+  <!-- QUICK REFERENCE -->
+  <div class="card" style="border-top-color: #2d3748; grid-column: 1/-1;">
+    <h2>⚡ Quick Reference — Things That Keep Coming Up On Tests</h2>
+    <table>
+      <tr><th>Concept</th><th>Answer</th><th>Common Mistake</th></tr>
+      <tr><td>JS is what kind of language?</td><td><span class="badge green">interpreted</span></td><td>saying "compiled"</td></tr>
+      <tr><td>Everything in JS is a?</td><td><span class="badge green">object</span></td><td>confusing with "interpreted"</td></tr>
+      <tr><td>push() returns?</td><td><span class="badge green">new length</span></td><td>thinking it returns the array</td></tr>
+      <tr><td>pop() returns?</td><td><span class="badge green">removed item</span></td><td>thinking it returns length</td></tr>
+      <tr><td>Skip iteration in loop?</td><td><span class="badge green">continue</span></td><td>saying "break"</td></tr>
+      <tr><td>Exit loop entirely?</td><td><span class="badge green">break</span></td><td>saying "continue"</td></tr>
+      <tr><td>String → Number?</td><td><span class="badge green">Number()</span></td><td>saying toString()</td></tr>
+      <tr><td>Replace substring?</td><td><span class="badge green">.replace(old, new)</span></td><td>using indexOf or typeof</td></tr>
+      <tr><td>Array → string with delimiter?</td><td><span class="badge green">.join()</span></td><td>using .split()</td></tr>
+      <tr><td>String → array?</td><td><span class="badge green">.split()</span></td><td>using .join()</td></tr>
+      <tr><td>Element type that was clicked?</td><td><span class="badge green">event.target.nodeName</span></td><td>using innerHTML</td></tr>
+      <tr><td>if statement needs else?</td><td><span class="badge red">FALSE — optional</span></td><td>thinking else is required</td></tr>
+      <tr><td>while auto-increments?</td><td><span class="badge red">FALSE — manual i++</span></td><td>forgetting i++</td></tr>
+      <tr><td>addEventListener needs ()?</td><td><span class="badge red">FALSE — no ()</span></td><td>writing myFunction()</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<p style="text-align:center; margin-top:20px; color:#718096; font-size:0.85em;">
+  Good luck Melika! You've got this! 💪 — COMP1073 Test 1
+</p>
+
+</body>
+</html>
