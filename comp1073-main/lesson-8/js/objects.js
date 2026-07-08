@@ -73,7 +73,20 @@ let value = "Black";
 person[key]= value;
 
 /* STEP 11a: 'this' is very useful - it allows us to refer to the object in question, specifically. This will become much clearer later in the course. Create two new objects, each with a name, and a function that outputs the name */
+// let name= "ABC";
+let person1={
+    name: "person1",
+    hello: function(){
+        return ` Hey, this is ${this.name}.`;
+    }
+}
 
+let person2={
+    name: "person2",
+    hello: function(){
+        return ` Hey, this is ${this.name}.`;
+    }
+}
 
 /* STEP 11b: Call up both person1.hello() and person2.hello() in the console to see how 'this' is specific to each object */
 
