@@ -29,3 +29,30 @@ header p {
   font-style: italic;
 }
 
+/* student info line */
+#student-info {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #b8330a;
+  margin: 0.5rem 0 1.5rem;
+}
+
+/* page layout */
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+/* the form card */
+#pizza-form {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(232, 66, 12, 0.18);
+}
+
+#pizza-form h2 {
+  margin-top: 0;
+  color: #e8420c;
+}
