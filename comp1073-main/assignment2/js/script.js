@@ -54,3 +54,30 @@ const cheeseLabels = ["Light", "Regular", "Extra", "Extra Extra Cheesy"];
 cheeseRange.addEventListener("input", () => {
   cheeseOutput.textContent = cheeseLabels[cheeseRange.value];
 });
+
+/* form submit */
+const form = document.getElementById("pizza-form");
+const orderOutput = document.getElementById("order-output");
+const orderSummary = document.getElementById("order-summary");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault(); // stop the page from reloading
+
+  clearErrors();
+
+  // run all validation checks
+  const validName = validateName();
+  const validSize = validateSize();
+  const validCrust = validateCrust();
+  const validSauce = validateSauce();
+  const validToppings = validateToppings();
+  const validQuantity = validateQuantity();
+  const validDelivery = validateDelivery();
+
+  const allValid = validName && validSize && validCrust &&
+    validSauce && validToppings && validQuantity && validDelivery;
+
+  if (!allValid) {
+    orderOutput.classList.add("hidden");
+    return; 
+  }
