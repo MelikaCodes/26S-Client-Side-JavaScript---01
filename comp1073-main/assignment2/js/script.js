@@ -175,3 +175,14 @@ function validateDelivery() {
   }
   return true;
 }
+
+
+/* helpers */
+function showError(id, message) {
+  document.getElementById(id).textContent = message;
+}
+
+function clearErrors() {
+  document.querySelectorAll(".error-msg").forEach(el => el.textContent = "");
+  document.querySelectorAll(".invalid").forEach(el => el.classList.remove("invalid"));
+}
