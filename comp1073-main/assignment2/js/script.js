@@ -22,4 +22,19 @@ document.getElementById("student-info").textContent =
         this.delivery= delivery;
         this.notes= notes;
     }
+     // builds the order summary and returns it as a string
+     getOrderSummary(){
+         const toppingsList = this.toppings.length > 0
+      ? this.toppings.join(", ")
+      : "no extra toppings";
+
+      let summary= `Thanks, ${this.name}! Here's your order: /n/n `;
+      summary +=`${this.quantity} x ${this.size} pizza on ${this.crust} crust\n`;
+      summary +=`sauce: ${this.sauce}\n`;
+      summary +=`cheese: ${this.cheeselevel}\n`;
+      summary +=`Topping: ${toppingsList}\n`;
+      summary +=`Method: ${this.delivery}\n`;
+     }
+
+
   }
