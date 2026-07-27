@@ -145,3 +145,28 @@ fieldset input {
 #order-btn:hover {
   transform: translateY(-2px);
 }
+
+/* order summary card */
+#order-output {
+  margin-top: 2rem;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(232, 66, 12, 0.18);
+  border: 2px dashed #ffcdb0;
+}
+
+#order-output h2 {
+  margin-top: 0;
+  color: #e8420c;
+}
+
+#order-summary {
+  white-space: pre-line;
+  font-size: 1.02rem;
+}
+
+/* hides the order summary until JS shows it */
+.hidden {
+  display: none;
+}
