@@ -41,8 +41,16 @@ document.getElementById("student-info").textContent =
 
            summary += `\nEnjoy your pizza! 🍕`;
     return summary;
-    
+
      }
 
-
   }
+
+  /* cheese slider label  */
+const cheeseRange = document.getElementById("cheese-range");
+const cheeseOutput = document.getElementById("cheese-output");
+const cheeseLabels = ["Light", "Regular", "Extra", "Extra Extra Cheesy"];
+
+cheeseRange.addEventListener("input", () => {
+  cheeseOutput.textContent = cheeseLabels[cheeseRange.value];
+});
