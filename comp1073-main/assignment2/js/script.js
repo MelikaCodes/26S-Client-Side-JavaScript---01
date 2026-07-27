@@ -105,3 +105,73 @@ form.addEventListener("submit", (event) => {
   orderOutput.scrollIntoView({ behavior: "smooth" });
 });
 
+
+/* validation checks */
+function validateName() {
+  const input = document.getElementById("customer-name");
+  if (input.value.trim() === "") {
+    showError("error-name", "Please enter your name.");
+    input.classList.add("invalid");
+    return false;
+  }
+  return true;
+}
+
+function validateSize() {
+  const input = document.getElementById("size");
+  if (input.value === "") {
+    showError("error-size", "Please choose a size.");
+    input.classList.add("invalid");
+    return false;
+  }
+  return true;
+}
+
+function validateCrust() {
+  const checked = document.querySelector('input[name="crust"]:checked');
+  if (!checked) {
+    showError("error-crust", "Please pick a crust.");
+    return false;
+  }
+  return true;
+}
+
+function validateSauce() {
+  const input = document.getElementById("sauce");
+  if (input.value === "") {
+    showError("error-sauce", "Please choose a sauce.");
+    input.classList.add("invalid");
+    return false;
+  }
+  return true;
+}
+
+function validateToppings() {
+  const checked = document.querySelectorAll('input[name="toppings"]:checked');
+  if (checked.length === 0) {
+    showError("error-toppings", "Pick at least one topping.");
+    return false;
+  }
+  return true;
+}
+
+function validateQuantity() {
+  const input = document.getElementById("quantity");
+  const value = Number(input.value);
+  if (!input.value || value < 1 || value > 10) {
+    showError("error-quantity", "Quantity must be 1-10.");
+    input.classList.add("invalid");
+    return false;
+  }
+  return true;
+}
+
+function validateDelivery() {
+  const input = document.getElementById("delivery");
+  if (input.value === "") {
+    showError("error-delivery", "Choose delivery or pickup.");
+    input.classList.add("invalid");
+    return false;
+  }
+  return true;
+}
