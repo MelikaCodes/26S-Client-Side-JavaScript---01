@@ -122,3 +122,26 @@ fieldset input {
   margin-top: 0.3rem;
   min-height: 1em;
 }
+
+/* red outline for invalid fields */
+.invalid {
+  border-color: #d4145a !important;
+}
+
+/* order button */
+#order-btn {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff3d1f, #ff8a00);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+#order-btn:hover {
+  transform: translateY(-2px);
+}
