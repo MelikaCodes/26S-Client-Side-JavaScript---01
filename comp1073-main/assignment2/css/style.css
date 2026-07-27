@@ -1,0 +1,14 @@
+/* The Pizza Maker - style.css */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fff4ec 0%, #ffe3d6 100%);
+  color: #5c1f0e;
+  line-height: 1.5;
+}
+/* header */
