@@ -71,3 +71,27 @@ legend {
   margin-bottom: 0.4rem;
   color: #8a2a0d;
 }
+
+
+/* text inputs, dropdowns, textarea all share this look */
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid #ffcdb0;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #fffaf7;
+  color: #5c1f0e;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #ff5a1f;
+}
