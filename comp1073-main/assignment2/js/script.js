@@ -28,12 +28,20 @@ document.getElementById("student-info").textContent =
       ? this.toppings.join(", ")
       : "no extra toppings";
 
-      let summary= `Thanks, ${this.name}! Here's your order: /n/n `;
+      let summary= `Thanks, ${this.name}! Here's your order: \n\n `;
       summary +=`${this.quantity} x ${this.size} pizza on ${this.crust} crust\n`;
       summary +=`sauce: ${this.sauce}\n`;
       summary +=`cheese: ${this.cheeselevel}\n`;
       summary +=`Topping: ${toppingsList}\n`;
       summary +=`Method: ${this.delivery}\n`;
+
+          if (this.notes.trim() !== "") {
+      summary += `Notes: ${this.notes}\n`;
+          }
+
+           summary += `\nEnjoy your pizza! 🍕`;
+    return summary;
+    
      }
 
 
