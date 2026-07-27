@@ -81,3 +81,27 @@ form.addEventListener("submit", (event) => {
     orderOutput.classList.add("hidden");
     return; 
   }
+
+   // grab the form values
+  const name = document.getElementById("customer-name").value.trim();
+  const size = document.getElementById("size").value;
+  const crust = document.querySelector('input[name="crust"]:checked').value;
+  const sauce = document.getElementById("sauce").value;
+  const cheeseLevel = cheeseLabels[cheeseRange.value];
+  const quantity = Number(document.getElementById("quantity").value);
+  const delivery = document.getElementById("delivery").value;
+  const notes = document.getElementById("notes").value;
+
+  const checkedToppings = document.querySelectorAll('input[name="toppings"]:checked');
+  const toppings = Array.from(checkedToppings).map(box => box.value);
+
+
+  // build the pizza object
+  const order = new Pizza(name, size, crust, sauce, cheeseLevel, toppings, quantity, delivery, notes);
+
+  // show the summary by calling the method on the object
+  orderSummary.textContent = order.getOrderSummary();
+  orderOutput.classList.remove("hidden");
+  orderOutput.scrollIntoView({ behavior: "smooth" });
+});
+
