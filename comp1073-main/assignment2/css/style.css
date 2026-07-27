@@ -12,3 +12,20 @@ body {
   line-height: 1.5;
 }
 /* header */
+header {
+  text-align: center;
+  padding: 2.5rem 1rem 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  color: #e8420c;
+}
+
+header p {
+  margin: 0.25rem 0 0;
+  color: #ff6a1a;
+  font-style: italic;
+}
+
