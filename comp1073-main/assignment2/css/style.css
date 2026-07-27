@@ -95,3 +95,30 @@ textarea:focus {
   outline: none;
   border-color: #ff5a1f;
 }
+
+/* cheese slider */
+input[type="range"] {
+  width: 100%;
+  accent-color: #ff5a1f;
+}
+
+/* radio + checkbox labels, side by side instead of blocky */
+fieldset label {
+  display: inline-block;
+  font-weight: 400;
+  margin: 0 1rem 0.5rem 0;
+  color: #5c1f0e;
+}
+
+fieldset input {
+  margin-right: 0.4rem;
+}
+
+/* error messages under each field */
+.error-msg {
+  display: block;
+  color: #d4145a;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  min-height: 1em;
+}
