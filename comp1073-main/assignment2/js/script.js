@@ -1,4 +1,3 @@
-
 /* The Pizza Maker - script.js */
 
 /* student info  */
@@ -9,44 +8,83 @@ document.getElementById("student-info").textContent =
   `Student: ${studentName} | ID: ${studentId}`;
 
 
-  /* the Pizza class */
-  class Pizza{
-    constructor(name, size, crust, sause, cheeselevel, toppings, quantity, delivery, notes){
-        this.name= name;
-        this.size=size;
-        this.crust= crust;
-        this.sauce= sause;
-        this.cheeselevel= cheeselevel;
-        this.toppings= toppings;
-        this.quantity= quantity;
-        this.delivery= delivery;
-        this.notes= notes;
+/* the Pizza class */
+class Pizza {
+  constructor(name, size, crust, sauce, cheeselevel, toppings, quantity, delivery, notes) {
+    this.name = name;
+    this.size = size;
+    this.crust = crust;
+    this.sauce = sauce;
+    this.cheeselevel = cheeselevel;
+    this.toppings = toppings;
+    this.quantity = quantity;
+    this.delivery = delivery;
+    this.notes = notes;
+  }
+
+  // works out the price of one pizza (before quantity is applied)
+  calculatePrice() {
+    // base price depends on size
+    const sizePrices = {
+      "Small": 8,
+      "Medium": 10,
+      "Large": 12,
+      "Extra Large": 14
+    };
+
+    let price = sizePrices[this.size] || 10; // fallback just in case
+
+    // stuffed crust costs a little extra
+    if (this.crust === "Stuffed Crust") {
+      price += 2;
     }
-     // builds the order summary and returns it as a string
-     getOrderSummary(){
-         const toppingsList = this.toppings.length > 0
+
+    // each topping adds $1.25
+    price += this.toppings.length * 1.25;
+
+    // extra cheese levels cost a bit more (index 2 = "Extra", 3 = "Extra Extra Cheesy")
+    const cheeseIndex = cheeseLabels.indexOf(this.cheeselevel);
+    if (cheeseIndex >= 2) {
+      price += 1;
+    }
+
+    // delivery adds a flat fee
+    if (this.delivery === "Delivery") {
+      price += 3;
+    }
+
+    return price;
+  }
+
+  // builds the order summary and returns it as a string
+  getOrderSummary() {
+    const toppingsList = this.toppings.length > 0
       ? this.toppings.join(", ")
       : "no extra toppings";
 
-      let summary= `Thanks, ${this.name}! Here's your order: \n\n `;
-      summary +=`${this.quantity} x ${this.size} pizza on ${this.crust} crust\n`;
-      summary +=`sauce: ${this.sauce}\n`;
-      summary +=`cheese: ${this.cheeselevel}\n`;
-      summary +=`Topping: ${toppingsList}\n`;
-      summary +=`Method: ${this.delivery}\n`;
+    const pricePerPizza = this.calculatePrice();
+    const totalPrice = (pricePerPizza * this.quantity).toFixed(2);
 
-          if (this.notes.trim() !== "") {
+    let summary = `Thanks, ${this.name}! Here's your order: \n\n `;
+    summary += `${this.quantity} x ${this.size} pizza on ${this.crust} crust\n`;
+    summary += `sauce: ${this.sauce}\n`;
+    summary += `cheese: ${this.cheeselevel}\n`;
+    summary += `Topping: ${toppingsList}\n`;
+    summary += `Method: ${this.delivery}\n`;
+
+    if (this.notes.trim() !== "") {
       summary += `Notes: ${this.notes}\n`;
-          }
+    }
 
-           summary += `\nEnjoy your pizza! 🍕`;
+    summary += `\nPrice per pizza: $${pricePerPizza.toFixed(2)}`;
+    summary += `\nTotal (x${this.quantity}): $${totalPrice}`;
+    summary += `\n\nEnjoy your pizza! 🍕`;
     return summary;
-
-     }
-
   }
+}
 
-  /* cheese slider label  */
+
+/* cheese slider label  */
 const cheeseRange = document.getElementById("cheese-range");
 const cheeseOutput = document.getElementById("cheese-output");
 const cheeseLabels = ["Light", "Regular", "Extra", "Extra Extra Cheesy"];
@@ -79,10 +117,10 @@ form.addEventListener("submit", (event) => {
 
   if (!allValid) {
     orderOutput.classList.add("hidden");
-    return; 
+    return;
   }
 
-   // grab the form values
+  // grab the form values
   const name = document.getElementById("customer-name").value.trim();
   const size = document.getElementById("size").value;
   const crust = document.querySelector('input[name="crust"]:checked').value;
@@ -95,13 +133,18 @@ form.addEventListener("submit", (event) => {
   const checkedToppings = document.querySelectorAll('input[name="toppings"]:checked');
   const toppings = Array.from(checkedToppings).map(box => box.value);
 
-
   // build the pizza object
   const order = new Pizza(name, size, crust, sauce, cheeseLevel, toppings, quantity, delivery, notes);
 
   // show the summary by calling the method on the object
   orderSummary.textContent = order.getOrderSummary();
+
+  // trigger the fade-in animation each time a new order is shown
   orderOutput.classList.remove("hidden");
+  orderOutput.classList.remove("pop-in"); // reset animation if it already played
+  void orderOutput.offsetWidth; // forces the browser to notice the class was removed
+  orderOutput.classList.add("pop-in");
+
   orderOutput.scrollIntoView({ behavior: "smooth" });
 });
 
