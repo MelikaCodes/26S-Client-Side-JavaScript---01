@@ -171,3 +171,20 @@ fieldset input {
 .hidden {
   display: none;
 }
+
+/* pop-in animation for the order summary card
+   MDN reference: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations */
+.pop-in {
+  animation: popIn 0.4s ease-out;
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
