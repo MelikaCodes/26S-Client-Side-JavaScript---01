@@ -139,14 +139,18 @@ form.addEventListener("submit", (event) => {
   // show the summary by calling the method on the object
   orderSummary.textContent = order.getOrderSummary();
 
-  // trigger the fade-in animation each time a new order is shown
+    // trigger the fade-in animation each time a new order is shown
   orderOutput.classList.remove("hidden");
   orderOutput.classList.remove("pop-in"); // reset animation if it already played
-  void orderOutput.offsetWidth; // forces the browser to notice the class was removed
+
+  // forces the browser to "notice" the class was removed before we add it back.
+  // reading offsetWidth triggers a reflow, which is what makes this trick work.
+  // MDN reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetWidth
+  void orderOutput.offsetWidth;
+
   orderOutput.classList.add("pop-in");
 
   orderOutput.scrollIntoView({ behavior: "smooth" });
-});
 
 
 /* validation checks */
