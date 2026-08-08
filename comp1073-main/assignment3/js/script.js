@@ -89,3 +89,30 @@ async function searchArtworks(query) {
     galleryGrid.innerHTML = `<p class="gallery-error">Something went wrong reaching the gallery. Please try again.</p>`;
   }
 }
+
+// Builds one card per artwork
+function renderGallery(artworks) {
+  galleryGrid.innerHTML = "";
+ 
+  artworks.forEach((art) => {
+    const card = document.createElement("button");
+    card.className = "gallery-card";
+    card.type = "button";
+    card.setAttribute("aria-label", `View details for ${art.title}`);
+ 
+    const thumbUrl = buildImageUrl(art.image_id, 500);
+ 
+    card.innerHTML = `
+      <div class="gallery-card__frame">
+        <img src="${thumbUrl}" alt="${escapeHtml(art.title)}" loading="lazy" />
+      </div>
+      <div class="gallery-card__plate">
+        <p class="gallery-card__title">${escapeHtml(art.title)}</p>
+        <p class="gallery-card__meta">${escapeHtml(art.date_display || "Date unknown")}</p>
+      </div>
+    `;
+ 
+    card.addEventListener("click", () => openModal(art));
+    galleryGrid.appendChild(card);
+  });
+}
