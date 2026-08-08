@@ -116,3 +116,27 @@ function renderGallery(artworks) {
     galleryGrid.appendChild(card);
   });
 }
+
+// Fills in and opens the detail modal
+function openModal(art) {
+  modalImage.src = buildImageUrl(art.image_id, 900);
+  modalImage.alt = art.title;
+  modalTitle.textContent = art.title;
+  modalArtist.textContent = art.artist_display || "Artist unknown";
+  modalDate.textContent = art.date_display || "";
+  modalMedium.textContent = art.medium_display || "";
+  modalCredit.textContent = art.credit_line || "";
+ 
+  modalOverlay.classList.add("is-open");
+}
+ 
+function closeModal() {
+  modalOverlay.classList.remove("is-open");
+}
+ 
+// Prevents API text from being injected as raw HTML
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = str || "";
+  return div.innerHTML;
+}
