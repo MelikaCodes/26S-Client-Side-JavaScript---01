@@ -130,3 +130,25 @@ a { color: var(--color-gold); }
 }
  
 .search-btn:hover { background: #dab35b; transform: translateY(-1px); }
+
+
+/* Gallery grid */
+.gallery-section {
+  padding: 3rem var(--gutter) 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+ 
+.gallery-status {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-ink-dim);
+  min-height: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+ 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 2rem 1.75rem;
+}
