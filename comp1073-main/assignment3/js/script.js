@@ -31,7 +31,30 @@ const modalDate=document.getElementById("modal-date");
 const modalMedium=document.getElementById("modal-medium");
 const modalCredit=document.getElementById("modal-credit");
 
-document.addEventListener("DOMContentLoaded", ()=>{
+document.addEventListener("DOMContentLoaded", () => {
+  renderStudentInfo();
+  searchArtworks("landscape"); // default gallery on load
+ 
+  searchForm.addEventListener("submit", handleSearchSubmit);
+  modalClose.addEventListener("click", closeModal);
+ 
+  // close modal on outside click or Escape
+  modalOverlay.addEventListener("click", (event) => {
+    if (event.target === modalOverlay) closeModal();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeModal();
+  });
+});
 
-    
-})
+// Adds student ID + name to the page
+function renderStudentInfo() {
+  studentInfoEl.textContent = `Student ID: ${STUDENT_ID} — ${STUDENT_NAME}`;
+}
+ 
+function handleSearchSubmit(event) {
+  event.preventDefault();
+  const query = searchInput.value.trim();
+  if (query.length === 0) return;
+  searchArtworks(query);
+}
