@@ -58,3 +58,34 @@ function handleSearchSubmit(event) {
   if (query.length === 0) return;
   searchArtworks(query);
 }
+
+// Fetches artworks matching the query and renders them
+async function searchArtworks(query) {
+  galleryStatus.textContent = `Searching the collection for "${query}"…`;
+  galleryGrid.innerHTML = "";
+ 
+  const url = `${API_BASE}?q=${encodeURIComponent(query)}&fields=${FIELDS}&limit=24`;
+ 
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`API responded with status ${response.status}`);
+ 
+    const data = await response.json();
+    const artworks = data.data || [];
+ 
+    // skip results with no image — nothing to show
+    const withImages = artworks.filter((art) => art.image_id);
+ 
+    if (withImages.length === 0) {
+      galleryStatus.textContent = `No illustrated results for "${query}". Try another search.`;
+      return;
+    }
+ 
+    galleryStatus.textContent = `Showing ${withImages.length} works for "${query}"`;
+    renderGallery(withImages);
+  } catch (error) {
+    console.error("Error fetching artworks:", error);
+    galleryStatus.textContent = "";
+    galleryGrid.innerHTML = `<p class="gallery-error">Something went wrong reaching the gallery. Please try again.</p>`;
+  }
+}
