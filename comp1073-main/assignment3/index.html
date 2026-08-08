@@ -14,3 +14,74 @@
     <!-- defer keeps the script from running until the DOM is ready, since it's linked in the head -->
   <script src="js/script.js" defer></script>
   </head>
+
+  <body>
+  <!-- Header / hero -->
+  <header class="hero">
+    <div class="hero__inner">
+      <p class="eyebrow">Art Institute of Chicago &middot; Public Collection</p>
+      <h1 class="hero__title">On the Wall</h1>
+      <p class="hero__subtitle">
+        A small window into the Art Institute of Chicago's open collection.
+        Search by artist, movement, or subject and step into the gallery.
+      </p>
+ 
+      <!-- Student ID and name are inserted dynamically below by JavaScript -->
+      <p id="student-info" class="student-info"></p>
+ 
+      <form id="search-form" class="search-form" autocomplete="off">
+        <label for="search-input" class="visually-hidden">Search artworks</label>
+        <input
+          type="text"
+          id="search-input"
+          name="search"
+          placeholder="Try &ldquo;Monet&rdquo;, &ldquo;self portrait&rdquo;, &ldquo;Chicago&rdquo;&hellip;"
+          required
+        />
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+    </div>
+  </header>
+
+<!-- Main gallery -->
+ <main>
+    <section class="gallery-section" aria-live="polite">
+      <div class="gallery-status" id="gallery-status"></div>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+ </main>
+
+
+  <!-- Detail modal — hidden until JS adds "is-open" on card click -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Close artwork detail">&times;</button>
+      <div class="modal__frame">
+        <img id="modal-image" class="modal__image" src="" alt="" />
+      </div>
+      <div class="modal__label">
+        <p class="modal__eyebrow" id="modal-date"></p>
+        <h2 class="modal__title" id="modal-title"></h2>
+        <p class="modal__artist" id="modal-artist"></p>
+        <p class="modal__medium" id="modal-medium"></p>
+        <p class="modal__credit" id="modal-credit"></p>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>
+      Built with the
+      <a href="https://api.artic.edu/docs/" target="_blank" rel="noopener noreferrer">
+        Art Institute of Chicago API
+      </a>
+      &mdash; documentation followed for this assignment.
+    </p>
+    <p class="site-footer__note">Artwork images and data courtesy of the Art Institute of Chicago.</p>
+  </footer>
+
+
+
+  </body>
+  </html>
