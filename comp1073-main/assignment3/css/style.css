@@ -214,3 +214,13 @@ a { color: var(--color-gold); }
   text-transform: uppercase;
   letter-spacing: 0.02em;
 }
+
+
+/* Status states */
+.gallery-empty,
+.gallery-error {
+  font-family: var(--font-mono);
+  color: var(--color-ink-dim);
+  font-size: 0.9rem;
+}
+
