@@ -224,3 +224,104 @@ a { color: var(--color-gold); }
   font-size: 0.9rem;
 }
 
+
+/* Detail modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 9, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 100;
+}
+ 
+.modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+ 
+.modal {
+  position: relative;
+  background: var(--color-mat);
+  color: var(--color-label);
+  max-width: 780px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  border-radius: var(--radius);
+  padding: 2rem;
+  transform: scale(0.97) translateY(8px);
+  transition: transform 0.2s ease;
+}
+ 
+.modal-overlay.is-open .modal {
+  transform: scale(1) translateY(0);
+}
+ 
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+ 
+.modal__frame {
+  width: 100%;
+  max-height: 55vh;
+  background: var(--color-mat-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+ 
+.modal__image {
+  width: 100%;
+  max-height: 55vh;
+  object-fit: contain;
+  display: block;
+}
+ 
+.modal__label { border-top: 1px solid rgba(43, 42, 38, 0.15); padding-top: 1rem; }
+ 
+.modal__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-sage);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.35rem;
+}
+ 
+.modal__title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.6rem;
+  margin: 0 0 0.35rem;
+}
+ 
+.modal__artist { font-weight: 600; margin: 0 0 0.5rem; }
+ 
+.modal__medium,
+.modal__credit {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #55524A;
+  margin: 0.2rem 0;
+}
