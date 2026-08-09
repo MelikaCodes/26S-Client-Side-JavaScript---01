@@ -19,7 +19,7 @@ const studentInfoEl = document.getElementById("student-info");
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 const galleryGrid = document.getElementById("gallery-grid");
-const galleryStatus = document.getElementById("gallery-status"); // was DocumentFragment.getElementById — fixed
+const galleryStatus = document.getElementById("gallery-status"); 
 
 const modalOverlay = document.getElementById("modal-overlay");
 const modalClose = document.getElementById("modal-close");
