@@ -325,3 +325,25 @@ a { color: var(--color-gold); }
   color: #55524A;
   margin: 0.2rem 0;
 }
+
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem var(--gutter) 3rem;
+  font-size: 0.85rem;
+  color: var(--color-ink-dim);
+  border-top: 1px solid rgba(237, 233, 223, 0.1);
+}
+ 
+.site-footer__note { font-size: 0.75rem; opacity: 0.7; margin-top: 0.35rem; }
+ 
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+ 
+/* Small screens */
+@media (max-width: 480px) {
+  .search-form { flex-direction: column; }
+}
