@@ -9,6 +9,7 @@ const STUDENT_NAME = "Melika Kashef";
 const API_BASE = "https://api.artic.edu/api/v1/artworks/search";
 const FIELDS = "id,title,artist_display,date_display,medium_display,credit_line,image_id";
 
+
 // Builds the image URL from an artwork's image_id
 function buildImageUrl(imageId, width = 600) {
   return `https://www.artic.edu/iiif/2/${imageId}/full/${width},/0/default.jpg`;
@@ -86,7 +87,7 @@ async function searchArtworks(query) {
     console.error("Error fetching artworks:", error);
     galleryStatus.textContent = "";
     galleryGrid.innerHTML = `<p class="gallery-error">Something went wrong reaching the gallery. Please try again.</p>`;
-  }
+  } 
 }
 
 // Builds one card per artwork
