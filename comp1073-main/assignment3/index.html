@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>On the Wall | Art Institute of Chicago Explorer</title>
+  <title>On the Wall | iTunes Music Explorer</title>
 
   <!-- Google Fonts: Fraunces (display/serif), Inter (body/UI), IBM Plex Mono (wall-label captions) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,23 +20,23 @@
   <!-- Header / hero -->
   <header class="hero">
     <div class="hero__inner">
-      <p class="eyebrow">Art Institute of Chicago &middot; Public Collection</p>
+      <p class="eyebrow">iTunes Search API &middot; Music Catalog</p>
       <h1 class="hero__title">On the Wall</h1>
       <p class="hero__subtitle">
-        A small window into the Art Institute of Chicago's open collection.
-        Search by artist, movement, or subject and step into the gallery.
+        A small window into the iTunes music catalog.
+        Search by artist, song, or album, and give the preview a listen.
       </p>
 
       <!-- Student ID and name are inserted dynamically below by JavaScript -->
       <p id="student-info" class="student-info"></p>
 
       <form id="search-form" class="search-form" autocomplete="off">
-        <label for="search-input" class="visually-hidden">Search artworks</label>
+        <label for="search-input" class="visually-hidden">Search music</label>
         <input
           type="text"
           id="search-input"
           name="search"
-          placeholder="Try &ldquo;Monet&rdquo;, &ldquo;self portrait&rdquo;, &ldquo;Chicago&rdquo;&hellip;"
+          placeholder="Try &ldquo;Fleetwood Mac&rdquo;, &ldquo;lofi&rdquo;, &ldquo;jazz&rdquo;&hellip;"
           required
         />
         <button type="submit" class="search-btn">Search</button>
@@ -55,7 +55,7 @@
   <!-- Detail modal — hidden until JS adds "is-open" on card click -->
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-      <button class="modal-close" id="modal-close" aria-label="Close artwork detail">&times;</button>
+      <button class="modal-close" id="modal-close" aria-label="Close track detail">&times;</button>
       <div class="modal__frame">
         <img id="modal-image" class="modal__image" src="" alt="" referrerpolicy="no-referrer" />
       </div>
@@ -64,7 +64,7 @@
         <h2 class="modal__title" id="modal-title"></h2>
         <p class="modal__artist" id="modal-artist"></p>
         <p class="modal__medium" id="modal-medium"></p>
-        <p class="modal__credit" id="modal-credit"></p>
+        <audio id="modal-audio" class="modal__audio" controls></audio>
       </div>
     </div>
   </div>
@@ -73,12 +73,12 @@
   <footer class="site-footer">
     <p>
       Built with the
-      <a href="https://api.artic.edu/docs/" target="_blank" rel="noopener noreferrer">
-        Art Institute of Chicago API
+      <a href="https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html" target="_blank" rel="noopener noreferrer">
+        iTunes Search API
       </a>
       &mdash; documentation followed for this assignment.
     </p>
-    <p class="site-footer__note">Artwork images and data courtesy of the Art Institute of Chicago.</p>
+    <p class="site-footer__note">Album art, track data, and preview audio courtesy of Apple / iTunes.</p>
   </footer>
 
 </body>
