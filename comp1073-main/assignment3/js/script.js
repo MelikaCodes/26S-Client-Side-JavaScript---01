@@ -103,7 +103,7 @@ function renderGallery(artworks) {
 
     card.innerHTML = `
       <div class="gallery-card__frame">
-        <img src="${thumbUrl}" alt="${escapeHtml(art.title)}" loading="lazy" />
+        <img src="${thumbUrl}" alt="${escapeHtml(art.title)}" loading="lazy" referrerpolicy="no-referrer" />
       </div>
       <div class="gallery-card__plate">
         <p class="gallery-card__title">${escapeHtml(art.title)}</p>
