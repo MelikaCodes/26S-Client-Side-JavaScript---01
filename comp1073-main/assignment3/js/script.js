@@ -33,7 +33,7 @@ const modalAudio = document.getElementById("modal-audio");
 
 document.addEventListener("DOMContentLoaded", () => {
   renderStudentInfo();
-  searchTracks("fleetwood mac"); // default gallery on load
+  searchTracks("lana del rey"); // default gallery on load
 
   searchForm.addEventListener("submit", handleSearchSubmit);
   modalClose.addEventListener("click", closeModal);
