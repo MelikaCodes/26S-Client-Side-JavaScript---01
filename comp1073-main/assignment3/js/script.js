@@ -1,18 +1,18 @@
-// COMP1073 Assignment 3 — Art Institute of Chicago API
-// Docs: https://api.artic.edu/docs/ (no API key needed)
+// COMP1073 Assignment 3 — iTunes Search API
+// Docs: https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/index.html
+// No API key needed.
 
 // Student info
 const STUDENT_ID = "200652992";
 const STUDENT_NAME = "Melika Kashef";
 
-// API endpoint + the fields we want back for each artwork
-const API_BASE = "https://api.artic.edu/api/v1/artworks/search";
-const FIELDS = "id,title,artist_display,date_display,medium_display,credit_line,image_id";
+// API endpoint — searches the iTunes catalog for songs
+const API_BASE = "https://itunes.apple.com/search";
 
-
-// Builds the image URL from an artwork's image_id
-function buildImageUrl(imageId, width = 600) {
-  return `https://www.artic.edu/iiif/2/${imageId}/full/${width},/0/default.jpg`;
+// iTunes gives back a small 100x100 artwork URL by default.
+// Swapping "100x100" for a bigger size in the URL gets a higher-res image.
+function upscaleArtwork(url, size = 600) {
+  return url.replace("100x100", `${size}x${size}`);
 }
 
 // DOM references
@@ -20,7 +20,7 @@ const studentInfoEl = document.getElementById("student-info");
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 const galleryGrid = document.getElementById("gallery-grid");
-const galleryStatus = document.getElementById("gallery-status"); 
+const galleryStatus = document.getElementById("gallery-status");
 
 const modalOverlay = document.getElementById("modal-overlay");
 const modalClose = document.getElementById("modal-close");
@@ -29,11 +29,11 @@ const modalTitle = document.getElementById("modal-title");
 const modalArtist = document.getElementById("modal-artist");
 const modalDate = document.getElementById("modal-date");
 const modalMedium = document.getElementById("modal-medium");
-const modalCredit = document.getElementById("modal-credit");
+const modalAudio = document.getElementById("modal-audio");
 
 document.addEventListener("DOMContentLoaded", () => {
   renderStudentInfo();
-  searchArtworks("landscape"); // default gallery on load
+  searchTracks("fleetwood mac"); // default gallery on load
 
   searchForm.addEventListener("submit", handleSearchSubmit);
   modalClose.addEventListener("click", closeModal);
@@ -56,81 +56,92 @@ function handleSearchSubmit(event) {
   event.preventDefault();
   const query = searchInput.value.trim();
   if (query.length === 0) return;
-  searchArtworks(query);
+  searchTracks(query);
 }
 
-// Fetches artworks matching the query and renders them
-async function searchArtworks(query) {
-  galleryStatus.textContent = `Searching the collection for "${query}"…`;
+// Fetches tracks matching the query and renders them
+async function searchTracks(query) {
+  galleryStatus.textContent = `Searching for "${query}"…`;
   galleryGrid.innerHTML = "";
 
-  const url = `${API_BASE}?q=${encodeURIComponent(query)}&fields=${FIELDS}&limit=24`;
+  const url = `${API_BASE}?term=${encodeURIComponent(query)}&media=music&entity=song&limit=24`;
 
   try {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`API responded with status ${response.status}`);
 
     const data = await response.json();
-    const artworks = data.data || [];
+    const tracks = data.results || [];
 
-    // skip results with no image — nothing to show
-    const withImages = artworks.filter((art) => art.image_id);
+    // skip results with no artwork — nothing to show
+    const withArt = tracks.filter((track) => track.artworkUrl100);
 
-    if (withImages.length === 0) {
-      galleryStatus.textContent = `No illustrated results for "${query}". Try another search.`;
+    if (withArt.length === 0) {
+      galleryStatus.textContent = `No results for "${query}". Try another search.`;
       return;
     }
 
-    galleryStatus.textContent = `Showing ${withImages.length} works for "${query}"`;
-    renderGallery(withImages);
+    galleryStatus.textContent = `Showing ${withArt.length} tracks for "${query}"`;
+    renderGallery(withArt);
   } catch (error) {
-    console.error("Error fetching artworks:", error);
+    console.error("Error fetching tracks:", error);
     galleryStatus.textContent = "";
-    galleryGrid.innerHTML = `<p class="gallery-error">Something went wrong reaching the gallery. Please try again.</p>`;
-  } 
+    galleryGrid.innerHTML = `<p class="gallery-error">Something went wrong reaching the catalog. Please try again.</p>`;
+  }
 }
 
-// Builds one card per artwork
-function renderGallery(artworks) {
+// Builds one card per track
+function renderGallery(tracks) {
   galleryGrid.innerHTML = "";
 
-  artworks.forEach((art) => {
+  tracks.forEach((track) => {
     const card = document.createElement("button");
     card.className = "gallery-card";
     card.type = "button";
-    card.setAttribute("aria-label", `View details for ${art.title}`);
+    card.setAttribute("aria-label", `View details for ${track.trackName}`);
 
-    const thumbUrl = buildImageUrl(art.image_id, 500);
+    const thumbUrl = upscaleArtwork(track.artworkUrl100, 400);
 
     card.innerHTML = `
       <div class="gallery-card__frame">
-        <img src="${thumbUrl}" alt="${escapeHtml(art.title)}" loading="lazy" referrerpolicy="no-referrer" />
+        <img src="${thumbUrl}" alt="${escapeHtml(track.trackName)}" loading="lazy" referrerpolicy="no-referrer" />
       </div>
       <div class="gallery-card__plate">
-        <p class="gallery-card__title">${escapeHtml(art.title)}</p>
-        <p class="gallery-card__meta">${escapeHtml(art.date_display || "Date unknown")}</p>
+        <p class="gallery-card__title">${escapeHtml(track.trackName)}</p>
+        <p class="gallery-card__meta">${escapeHtml(track.artistName)}</p>
       </div>
     `;
 
-    card.addEventListener("click", () => openModal(art));
+    card.addEventListener("click", () => openModal(track));
     galleryGrid.appendChild(card);
   });
 }
 
 // Fills in and opens the detail modal
-function openModal(art) {
-  modalImage.src = buildImageUrl(art.image_id, 900);
-  modalImage.alt = art.title;
-  modalTitle.textContent = art.title;
-  modalArtist.textContent = art.artist_display || "Artist unknown";
-  modalDate.textContent = art.date_display || "";
-  modalMedium.textContent = art.medium_display || "";
-  modalCredit.textContent = art.credit_line || "";
+function openModal(track) {
+  modalImage.src = upscaleArtwork(track.artworkUrl100, 600);
+  modalImage.alt = track.trackName;
+  modalTitle.textContent = track.trackName;
+  modalArtist.textContent = track.artistName;
+  modalDate.textContent = track.releaseDate ? track.releaseDate.slice(0, 4) : "";
+  modalMedium.textContent = [track.collectionName, track.primaryGenreName]
+    .filter(Boolean)
+    .join(" — ");
+
+  // Some tracks don't have a preview clip available
+  if (track.previewUrl) {
+    modalAudio.src = track.previewUrl;
+    modalAudio.style.display = "block";
+  } else {
+    modalAudio.removeAttribute("src");
+    modalAudio.style.display = "none";
+  }
 
   modalOverlay.classList.add("is-open");
 }
 
 function closeModal() {
+  modalAudio.pause();
   modalOverlay.classList.remove("is-open");
 }
 
